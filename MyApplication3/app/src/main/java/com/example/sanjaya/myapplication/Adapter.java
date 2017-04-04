@@ -32,12 +32,17 @@ public class Adapter extends ArrayAdapter<String> {
     }
     @Override
     public int getCount() {
+        return keterangan.length;
+    }
+
+
+    @Override
+    public long getItemId(int position) {
         return 0;
     }
 
     @Override
-    public View getItem(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         View rowView=convertView;
         if(rowView==null){
@@ -55,17 +60,9 @@ public class Adapter extends ArrayAdapter<String> {
         holder = (ViewHolder) rowView.getTag();
         int[] uri=this.uri;
         String[] judul=this.judul,keterangan=this.keterangan;
-        holder.image.setImageURI(getString(uri[position]));
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        holder.image.setImageResource(uri[position]);
+        holder.judul.setText(judul[position]);
+        holder.keterangan.setText(keterangan[position]);
+        return rowView;
     }
 }
