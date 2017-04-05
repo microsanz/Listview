@@ -29,7 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
+                android:background="?attr/selectableItemBackground"
                 android:src="@drawable/ic_arrow_back_black_24dp"
                 android:tint="#FF5722"
                 android:clickable="true"
@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
+                android:background="?attr/selectableItemBackground"
                 android:src="@drawable/ic_search"
                 android:tint="#FF5722"
                 android:clickable="true"
@@ -60,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
+                android:background="?attr/selectableItemBackground"
                 android:src="@drawable/ic_shopping_cart"
                 android:tint="#FF5722"
                 android:clickable="true"
@@ -70,10 +70,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
                 android:src="@drawable/ic_more_vert"
                 android:tint="#FF5722"
                 android:clickable="true"
+                android:background="?attr/selectableItemBackground"
                 android:foreground="?android:attr/selectableItemBackground"/>
         </LinearLayout>
 
@@ -88,13 +88,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                android:background="?attr/selectableItemBackground">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
@@ -119,12 +120,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                android:background="?attr/selectableItemBackground">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
@@ -135,7 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Pilih"
+                        android:text="Urutkan"
                         android:textColor="#ff5722"
                         android:textSize="20sp"
                         android:layout_marginLeft="5dp"/>
@@ -147,7 +148,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
+                android:background="?attr/selectableItemBackground"
                 android:src="@drawable/ic_widgets_black_24dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -162,8 +163,13 @@
                 android:id="@+id/listView1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
             </ListView>
+            <GridView
+                android:id="@+id/gridView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+            </GridView>
         </RelativeLayout>
 
     </LinearLayout>

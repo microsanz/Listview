@@ -9,21 +9,24 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by sanjaya on 4/4/2017.
  */
 
 public class Adapter extends ArrayAdapter<String> {
     private final Activity context;
-    private String[] judul, keterangan;
-    private int[] uri;
+    private ArrayList<Barang> barang;
+    int layout=R.layout.item;
 
-    public Adapter(Activity context,int[] uri, String[] judul, String[]keterangan){
-        super(context,R.layout.item);
+    public Adapter(Activity context,ArrayList<Barang> barang,int layout){
+        super(context,layout);
         this.context = context;
-        this.uri = uri;
-        this.judul=judul;
-        this.keterangan=keterangan;
+        this.barang=barang;
+        this.layout=layout;
     }
 
     static class ViewHolder{
@@ -32,7 +35,7 @@ public class Adapter extends ArrayAdapter<String> {
     }
     @Override
     public int getCount() {
-        return keterangan.length;
+        return barang.size();
     }
 
 
@@ -47,7 +50,7 @@ public class Adapter extends ArrayAdapter<String> {
         View rowView=convertView;
         if(rowView==null){
             LayoutInflater inflater = context.getLayoutInflater();
-            rowView = inflater.inflate(R.layout.item, null);
+            rowView = inflater.inflate(layout, null);
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.image = (ImageView) rowView.findViewById(R.id.gambar);
             viewHolder.judul = (TextView) rowView.findViewById(R.id.judul);
@@ -58,11 +61,9 @@ public class Adapter extends ArrayAdapter<String> {
             holder = (ViewHolder) rowView.getTag();
         }
         holder = (ViewHolder) rowView.getTag();
-        int[] uri=this.uri;
-        String[] judul=this.judul,keterangan=this.keterangan;
-        holder.image.setImageResource(uri[position]);
-        holder.judul.setText(judul[position]);
-        holder.keterangan.setText(keterangan[position]);
+        holder.image.setImageResource(barang.get(position).getUri());
+        holder.judul.setText(barang.get(position).getJudul());
+        holder.keterangan.setText(barang.get(position).getHargaSimbol());
         return rowView;
     }
 }
