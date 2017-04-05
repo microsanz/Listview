@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioSatu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@drawable/ic_radio_button_unchecked"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="satu"
+            android:textSize="20dp" />
+
+
+        <RadioButton
+            android:id="@+id/radioDua"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@drawable/ic_radio_button_unchecked"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="dua"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/radioTiga"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:drawableRight="@drawable/ic_radio_button_unchecked"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="tiga"
+            android:textSize="20dp" />
+    </RadioGroup>
+</LinearLayout>

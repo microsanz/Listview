@@ -157,23 +157,11 @@
                 android:tint="#FF5722" />
         </LinearLayout>
 
-        <RelativeLayout
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <ListView
-                android:id="@+id/listView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </ListView>
-            <GridView
-                android:id="@+id/gridView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone"
-                android:numColumns="2">
-            </GridView>
-        </RelativeLayout>
+            
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
