@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout pilihLayout,pilihFilter;
     ImageButton switchGrid;
     GridView gridView;
-    int pilihan=0;
+    int pilihan=2;
     int visibility=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,19 @@ public class MainActivity extends AppCompatActivity {
                 final Dialog dialog=new Dialog(context);
                 dialog.setContentView(R.layout.urutkan);
                 dialog.setTitle("Berdasarkan");
+                if(MainActivity.this.pilihan==0){
+                    dialog.findViewById(R.id.gambarUrutkan1).setVisibility(View.VISIBLE);
+                    dialog.findViewById(R.id.gambarUrutkan2).setVisibility(View.GONE);
+                    dialog.findViewById(R.id.gambarUrutkan3).setVisibility(View.GONE);
+                }else if(MainActivity.this.pilihan==1){
+                    dialog.findViewById(R.id.gambarUrutkan1).setVisibility(View.GONE);
+                    dialog.findViewById(R.id.gambarUrutkan2).setVisibility(View.VISIBLE);
+                    dialog.findViewById(R.id.gambarUrutkan3).setVisibility(View.GONE);
+                }else{
+                    dialog.findViewById(R.id.gambarUrutkan1).setVisibility(View.GONE);
+                    dialog.findViewById(R.id.gambarUrutkan2).setVisibility(View.GONE);
+                    dialog.findViewById(R.id.gambarUrutkan3).setVisibility(View.VISIBLE);
+                }
                 RelativeLayout hargaRendahTinggi = (RelativeLayout) dialog.findViewById(R.id.hargaRendahTinggi);
                 RelativeLayout hargaTinggiRendah = (RelativeLayout) dialog.findViewById(R.id.hargaTinggiRendah);
                 RelativeLayout nama = (RelativeLayout) dialog.findViewById(R.id.nama);
@@ -84,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
                         listView1.setAdapter(adapter);
                         adapter=new Adapter(MainActivity.this,barangList,R.layout.item_grid);
                         gridView.setAdapter(adapter);
+                        MainActivity.this.pilihan=0;
+
                         dialog.dismiss();
                     }
                 });
@@ -100,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         listView1.setAdapter(adapter);
                         adapter=new Adapter(MainActivity.this,barangList,R.layout.item_grid);
                         gridView.setAdapter(adapter);
+                        MainActivity.this.pilihan=1;
                         dialog.dismiss();
                     }
                 });
@@ -116,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         listView1.setAdapter(adapter);
                         adapter=new Adapter(MainActivity.this,barangList,R.layout.item_grid);
                         gridView.setAdapter(adapter);
+                        MainActivity.this.pilihan=2;
                         dialog.dismiss();
                     }
                 });
@@ -140,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setTitle("Pilih filter.");
+                builder1.setTitle("Berdasarkan");
                 final String[] pilihan = new String[]{
                         "Harga rendah - tinggi",
                         "Harga tinggi - rendah",

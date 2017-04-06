@@ -20,12 +20,14 @@
             android:textSize="15sp"
             android:textColor="#000"/>
         <ImageView
+            android:id="@+id/gambarUrutkan1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_done"
             android:layout_centerInParent="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="8dp"
+            android:visibility="gone"
             />
     </RelativeLayout>
     <RelativeLayout
@@ -46,12 +48,14 @@
             android:textSize="15sp"
             android:textColor="#000"/>
         <ImageView
+            android:id="@+id/gambarUrutkan2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_done"
             android:layout_centerInParent="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="8dp"
+            android:visibility="gone"
             />
     </RelativeLayout>
     <RelativeLayout
@@ -72,6 +76,7 @@
             android:textSize="15sp"
             android:textColor="#000"/>
         <ImageView
+            android:id="@+id/gambarUrutkan3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_done"

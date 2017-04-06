@@ -1,47 +1,72 @@
 package com.example.sanjaya.myapplication;
 
-import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
-/**
- * Created by sanjaya on 4/5/2017.
- */
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.BarangHolder> {
+    private ArrayList<Barang> barang=new ArrayList<Barang>();
+    private Context context;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder>{
-    private Activity context;
-    private ArrayList<Barang> barang;
-
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, null);
-        RecyclerView.ViewHolder viewHolder = new RecyclerView.ViewHolder(view);
-        return viewHolder;
+    public RecyclerAdapter(ArrayList<Barang> barang,Context context){
+        this.barang=barang;
+        this.context=context;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Barang barang=this.barang.get(position);
+    public BarangHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
+        return new BarangHolder(inflate);
+    }
+
+    @Override
+    public void onBindViewHolder(BarangHolder holder, int position) {
+        Barang barang = this.barang.get(position);
+        holder.bindHolder(barang);
     }
 
     @Override
     public int getItemCount() {
-        barang.size();
+        return barang.size();
     }
-//    class CustomViewHolder extends RecyclerView.ViewHolder {
-//        protected ImageView imageView;
-//        protected TextView textView;
-//
-//        public CustomViewHolder(View view) {
-//            super(view);
-//            this.imageView = (ImageView) view.findViewById(R.id.thumbnail);
-//            this.textView = (TextView) view.findViewById(R.id.title);
-//        }
-//    }
+
+
+    class BarangHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private ImageView image;
+        private TextView judul,keterangan;
+
+        public BarangHolder(View itemView) {
+            super(itemView);
+            image=(ImageView) itemView.findViewById(R.id.gambar);
+            judul=(TextView) itemView.findViewById(R.id.judul);
+            keterangan=(TextView) itemView.findViewById(R.id.keterangan);
+            itemView.setOnClickListener(this);
+        }
+        public void bindHolder(Barang barang){
+            image.setImageResource(barang.getUri());
+            judul.setText(barang.getJudul());
+            keterangan.setText(barang.getHargaSimbol());
+        }
+
+        @Override
+        public void onClick(View v) {
+            int a = getLayoutPosition();
+            Context context=itemView.getContext();
+            Intent newIntent = new Intent(context,Viewitem.class);
+            newIntent.putExtra("image",barang.get(a).getUri());
+            newIntent.putExtra("judul",barang.get(a).getJudul());
+            newIntent.putExtra("keterangan",barang.get(a).getHargaSimbol());
+            context.startActivity(newIntent);
+        }
+    }
 }
